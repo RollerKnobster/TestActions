@@ -1,0 +1,18 @@
+name: Publish all
+
+on:
+  workflow_dispatch:
+    inputs:
+      options:
+        description: Options to build from vars
+        type: choice
+        required: true
+        options: ${{ fromJSON(format('[{0}]', vars.OPTIONS )) }}
+
+jobs:
+  some_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: some_step
+        run: |
+          echo 1
